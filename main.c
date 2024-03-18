@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-// Define a structure for package details.
 
+// Define a structure for package details.
 typedef struct {
     int priority; // The priority level of the package.
     char code[7]; // The code identifying the package.
@@ -162,6 +162,26 @@ void heapSort(Package* packages, int count) {
 }
 
 /**
+ * Performs an insertion sort on the array of packages.
+ *
+ * @param packages An array of Package structures to be sorted.
+ * @param count The number of packages in the array.
+ */
+void insertionSort(Package *packages, int count) {
+  int temp;
+    for (int i = 1; i < count - 1; i++) {
+        temp = packages[i].priority;
+        int j = i-1;
+        while (j >= 0 && packages[j].priority > temp) {
+            packages[j+1].priority = packages[j].priority;
+            j--;
+        }
+        packages[j + 1].priority = temp;
+    }
+
+}
+
+/**
  * Returns the name of the sorting algorithm based on the given choice.
  *
  * @param choice The choice of sorting algorithm.
@@ -172,7 +192,8 @@ const char* getSortName(int choice) {
         case 0: return "Quick Sort";
         case 1: return "Bubble Sort";
         case 2: return "Heap Sort";
-        default: return "Unknown Sort";
+        case 3: return "Insertion sort";
+        default: return "Quick Sort";
     }
 }
 
@@ -193,7 +214,7 @@ int main() {
     printf("How many values would you like to sort? ");
     scanf("%d", &maxValues);
 
-    printf("Choose a sorting algorithm: 0 for Quick Sort, 1 for Bubble Sort, 2 for Heap Sort, 3 for Quick Sort again: ");
+    printf("Choose a sorting algorithm: 0 for Quick Sort, 1 for Bubble Sort, 2 for Heap Sort, 3 for Insertion Sort: ");
     scanf("%d", &choice);
 
     Package* packages = NULL;
@@ -216,7 +237,7 @@ int main() {
             heapSort(packages, count);
             break;
         case 3:
-            quickSort(packages, 0, count - 1);
+            insertionSort(packages,  count - 1);
             break;
         default:
             printf("Invalid choice. Using Quick Sort.\n");
