@@ -245,7 +245,7 @@ int main() {
     end = clock();
 
     time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Sorting of %d values using %s algorithm took %f seconds to execute.\n", count, getSortName(choice), cpu_time_used);
+    printf("Sorting of %d values using %s algorithm took %f seconds to execute.\n", count, getSortName(choice), time_used);
 
     strcat(filename, ".out");
     savePackages(filename, packages, count);
