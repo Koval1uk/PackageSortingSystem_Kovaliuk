@@ -169,7 +169,7 @@ void heapSort(Package* packages, int count) {
  */
 void insertionSort(Package *packages, int count) {
   int temp;
-    for (int i = 1; i < count - 1; i++) {
+    for (int i = 1; i < count; i++) {
         temp = packages[i].priority;
         int j = i-1;
         while (j >= 0 && packages[j].priority > temp) {
@@ -178,7 +178,6 @@ void insertionSort(Package *packages, int count) {
         }
         packages[j + 1].priority = temp;
     }
-
 }
 
 /**
@@ -189,10 +188,10 @@ void insertionSort(Package *packages, int count) {
  */
 const char* getSortName(int choice) {
     switch(choice) {
-        case 0: return "Quick Sort";
-        case 1: return "Bubble Sort";
-        case 2: return "Heap Sort";
-        case 3: return "Insertion sort";
+        case 1: return "Quick Sort";
+        case 2: return "Bubble Sort";
+        case 3: return "Heap Sort";
+        case 4: return "Insertion sort";
         default: return "Quick Sort";
     }
 }
@@ -211,10 +210,10 @@ int main() {
     printf("Enter the filename: ");
     scanf("%255s", filename);
 
-    printf("How many values would you like to sort? ");
+    printf("How many values would you like to sort? (min = 0, max = 100000) : ");
     scanf("%d", &maxValues);
 
-    printf("Choose a sorting algorithm: 0 for Quick Sort, 1 for Bubble Sort, 2 for Heap Sort, 3 for Insertion Sort: ");
+    printf("Choose a sorting algorithm: 1 for Quick Sort, 2 for Bubble Sort, 3 for Heap Sort, 4 for Insertion Sort: ");
     scanf("%d", &choice);
 
     Package* packages = NULL;
@@ -223,21 +222,21 @@ int main() {
     loadPackages(filename, &packages, &count, maxValues);
 
     clock_t start, end;
-    double cpu_time_used;
+    double time_used;
 
     start = clock();
     switch(choice) {
-        case 0:
+        case 1:
             quickSort(packages, 0, count - 1);
             break;
-        case 1:
+        case 2:
             bubbleSort(packages, count);
             break;
-        case 2:
+        case 3:
             heapSort(packages, count);
             break;
-        case 3:
-            insertionSort(packages,  count - 1);
+        case 4:
+            insertionSort(packages,  count);
             break;
         default:
             printf("Invalid choice. Using Quick Sort.\n");
@@ -245,7 +244,7 @@ int main() {
     }
     end = clock();
 
-    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Sorting of %d values using %s algorithm took %f seconds to execute.\n", count, getSortName(choice), cpu_time_used);
 
     strcat(filename, ".out");
