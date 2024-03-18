@@ -20,16 +20,16 @@ The Package Sorting System is a comprehensive C program designed to manage and s
 1. **Clone the Repository**: Obtain the source code by cloning this repository or downloading the source code as a ZIP file and extracting it.
 
    ```bash
-   git clone //url
+   git clone https://github.com/Koval1uk/PackageSortingSystem_Kovaliuk.git
    ```
 
 2. **Compilation**: Navigate to the project directory and compile the source code using a C compiler. For GCC, the command would be:
 
    ```bash
-   gcc -o AZA_Assignment_Kovaliuk main.c
+   gcc -o PackageSortingSystem_Kovaliuk main.c
    ```
 
-   This will generate an executable named `AZA_Assignment_Kovaliuk`.
+   This will generate an executable named `PackageSortingSystem_Kovaliuk`.
 
 ## Usage Instructions
 
@@ -38,7 +38,7 @@ The Package Sorting System is a comprehensive C program designed to manage and s
 2. **Run the Program**: Execute the compiled program from the terminal or command prompt.
 
    ```bash
-   ./AZA_Assignment_Kovaliuk
+   ./PackageSortingSystem_Kovaliuk
    ```
 
 3. **Follow On-screen Prompts**: The program will ask for the input file name, the number of packages to sort, and the choice of sorting algorithm. Enter the requested information accordingly.
